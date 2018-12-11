@@ -17,7 +17,6 @@ int main() {
     for (int i = 1; i < n; i++) {
         if (highestScore < score[i])
             highestScore = score[i];
-        i++;
     }
 
     // Êä³ö½á¹û

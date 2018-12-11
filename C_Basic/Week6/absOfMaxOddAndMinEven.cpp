@@ -1,11 +1,10 @@
 #include <iostream>
-#include <math.h>
 using namespace std;
 
 int main() {
     int maxOdd = 0, minEven = 100, result, num;
 
-    // 获取输入，并找到最大奇数
+    // 获取输入，并找到最大奇数和最小偶数
     for (int i = 0; i < 6; i++) {
         cin >> num;
         if (num % 2 == 1 && num > maxOdd)
@@ -16,7 +15,9 @@ int main() {
     }
 
     // 计算绝对值结果
-    result = abs(maxOdd - minEven);
+    result = maxOdd - minEven;
+    if (result < 0)
+        result = 0 - result;
     cout << result;
 
     return 0; 
