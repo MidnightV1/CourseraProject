@@ -17,11 +17,11 @@ int main() {
 // 对整个细菌排序
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n - i - 1; j++) {
-      if （rate[j + 1] > rate[j]) {
+      if (rate[j + 1] > rate[j]) {
         int tmpId = id[j];
         id[j] = id[j + 1];
         id[j + 1] = tmpId;
-        doubel temRate = rate[j];
+        double tempRate = rate[j];
         rate[j] = rate[j + 1];
         rate[j + 1] = tempRate;
       }
@@ -29,7 +29,7 @@ int main() {
   }
 
 // 记录最大的差
-  doubel maxDiff = 0;
+  double maxDiff = 0;
   // 和最大的下标
   int maxDiffIndex = 0;
   for (int i = 0; i < n - 1; i++) {

@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int n, x, y;
 int main() {
     // 获取输入参数
+    int n, x, y;
     cin >> n >> x >> y;
 
     // 计算虫子吃苹果的数量
