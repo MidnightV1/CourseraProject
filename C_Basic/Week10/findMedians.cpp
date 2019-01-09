@@ -16,7 +16,7 @@ int main() {
         else {
             // 获取数据
             for (int i = 0; i < N; i++) {
-                cin >> data[i];
+                cin >> data[i]; 
             }
 
             // 计算中位数的位置k，若N为奇数，则中位数所在位置为k+1；若N为偶数，则中位数为k与k+1的平均值。
@@ -32,11 +32,13 @@ int main() {
                 }
                 // 根据N的奇偶性决定后续处理
                 if (count == target) {
-                    medianRight = data[i];
+                    medianLeft = data[i];
+                    count = 0;
                     continue;
                 }
                 else if (count == target + 1) {
                     medianRight = data[i];
+                    count = 0;
                     continue;
                 }
                 else
@@ -45,7 +47,7 @@ int main() {
 
             // 按照N的奇偶性判断中位数结果
             if (N % 2 == 1) {
-                result[groupNum - 1] = medianRight;
+                result[groupNum - 1] = medianLeft;
                 groupNum++;
             }
             else if (N % 2 == 0) {
