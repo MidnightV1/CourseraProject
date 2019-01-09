@@ -5,7 +5,6 @@ int main() {
     char s[80];
     int count_a = 0, count_e = 0, count_i = 0, count_o = 0, count_u = 0;
 
-    cout << "Enter a sentence:" << endl;
     cin.getline(s, 80);
 
     for (int i = 0; i < 80; i++) {
@@ -21,7 +20,7 @@ int main() {
             count_u++;
     }
 
-    cout << count_a << ' ' << count_e << ' ' << count_i << ' ' << count_o << ' ' << count_u << endl;
+    cout << count_a << ' ' << count_e << ' ' << count_i << ' ' << count_o << ' ' << count_u;
 
     return 0;
 }

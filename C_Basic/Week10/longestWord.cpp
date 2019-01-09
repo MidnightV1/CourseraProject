@@ -5,7 +5,6 @@ int main() {
     char s[500], word;
     int firstLetter = 0, lastLetter = 0, wordLength = 0, longestLength = 0;
     
-    cout << "Enter a sentence:" << endl;
     cin.getline(s, 500);
 
     for (int i = 0; i < 500; i++) {
