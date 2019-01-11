@@ -2,58 +2,62 @@
 using namespace std;
 
 int main() {
-    int N = 0, k = 0, medianLeft = 0, medianRight = 0, data[15000] = { 0 }, groupNum = 1, result[15000] = { 0 };
+    int N = 0, medianLeft = 0, medianRight = 0, data[15000] = { 0 }, groupNum = 0, result[15000] = { 0 };
 
     while (true) {
         cin >> N;
 
-        if (N == 0) {   // 如果N=0则终止输入并输出结果
-            for (int i = 0; i < groupNum - 1; i++) {
-                cout << result[i] << endl;
-            }
-            break;
-        }
-        else {
+        if (N != 0) {   // 如果N!=0则持续输入
             // 获取数据
             for (int i = 0; i < N; i++) {
-                cin >> data[i]; 
+                cin >> data[i];
             }
 
-            // 计算中位数的位置k，若N为奇数，则中位数所在位置为k+1；若N为偶数，则中位数为k与k+1的平均值。
-            k = N / 2;
-
-            //先计算一组数中K+1的值与K的值
-            int count = 0, target = N - k - 1;
+            // 根据中位数规则，N为奇数时，刚好存在N/2个数大于/小于中位数；N为偶数时，则需计算第N/2个数与第N/2 + 1个数的平均值作为中位数
+            // 先对每个数在数组中进行比较，找出比这个数大的数的个数
+            int count, target = N / 2;
             for (int i = 0; i < N; i++) {
+                count = 0; // 初始化计数器
                 for (int j = 0; j < N; j++) {
-                    if (data[j] < data[i]) {
+                    if (data[j] > data[i]) {
                         count++;
                     }
                 }
-                // 根据N的奇偶性决定后续处理
+
+                // 第N/2位数
                 if (count == target) {
                     medianLeft = data[i];
-                    count = 0;
                     continue;
                 }
-                else if (count == target + 1) {
+
+                // 第N/2 + 1位数
+                else if (count == target - 1) {
                     medianRight = data[i];
-                    count = 0;
                     continue;
                 }
-                else
-                    count = 0;
+
+                // 如果都找到了就结束查找
+                if (medianLeft != 0 && medianRight != 0) {
+                    break;
+                }
             }
 
             // 按照N的奇偶性判断中位数结果
             if (N % 2 == 1) {
-                result[groupNum - 1] = medianLeft;
+                result[groupNum] = medianLeft;
                 groupNum++;
             }
             else if (N % 2 == 0) {
-                result[groupNum - 1] = (medianLeft + medianRight) / 2;
+                result[groupNum] = (medianLeft + medianRight) / 2;
                 groupNum++;
             }
+        }
+
+        else {  // 如果N=0则终止输入并输出结果
+            for (int i = 0; i < groupNum; i++) {
+                cout << result[i] << endl;
+            }
+            break;
         }
     }
 

@@ -13,8 +13,8 @@ int main() {
 
     //输入n和m
     cin >> n >> m;
-    if (n > 4 || m > 4) {
-        cout << "error";
+    if (n > 4 || m > 4 || n < 0 || m < 0) {
+        cout << "error" << endl;
     }
     else {
         //交换数组
